@@ -1,30 +1,55 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Project Overview
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+This project is a simple RESTful API built using the NestJS framework with TypeScript. It is designed to provide a clear and structured approach to developing scalable and maintainable backend services. The API consists of three main modules: `Users`, `Items`, and `Auth`, each encapsulating its own set of functionalities and responsibilities.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Project Structure and Pattern
 
-## Description
+The architecture of this project follows a well-defined pattern that separates concerns and promotes reusability and testability. The pattern can be described as follows:
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+### Validation
+
+Input validation is the first step in processing a request. It ensures that the data received from clients is valid and meets the expected format and constraints. This is achieved using Data Transfer Objects (DTOs) and validation pipes provided by NestJS, which automatically validate incoming data against predefined schemas.
+
+### Controller
+
+The controller layer is responsible for handling incoming HTTP requests and delegating them to the appropriate service methods. Controllers define endpoints and route handlers, which are the entry points for client requests. They are kept lean and focused on request handling, leaving the business logic to the service layer.
+
+### Service
+
+The service layer contains the core business logic of the application. Services are responsible for performing operations such as data processing, business rule validation, and interaction with the repository layer. They encapsulate the application's use cases and provide a clear interface for the controllers.
+
+### Repository
+
+The repository layer abstracts the interaction with the data source (e.g., a database). It provides a collection of methods for accessing and manipulating data, hiding the details of the data storage and retrieval mechanisms. This layer is essential for achieving persistence agnosticism and simplifying data access throughout the application.
+
+## Modules
+
+### Users Module
+
+Manages user-related operations such as registration, profile updates, and user data retrieval. It ensures that user information is handled securely and efficiently.
+
+### Items Module
+
+Handles operations related to items, such as creating, updating, and fetching items. It provides the necessary endpoints for clients to interact with item data.
+
+### Auth Module
+
+Responsible for authentication and authorization functionalities. It implements mechanisms for user login, JWT token generation and validation, and access control to protect endpoints based on user roles or permissions.
+
+## Conclusion
+
+This project exemplifies a structured approach to building a RESTful API with NestJS and TypeScript. By adhering to the validation-controller-service-repository pattern, it achieves a clear separation of concerns, making the codebase more organized, modular, and easier to maintain and test. The modular
+
+## How to Use
+Clone the repository 
+```bash
+$ git clone https://github.com/Benardo07/Nest-JS-RESTFUL-API.git
+```
+
+then, go to the root directory
+```bash
+$ cd Nest-JS-RESTFUL-API
+```
 
 ## Installation
 
@@ -64,9 +89,8 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 
 ## Stay in touch
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- Author - [Benardo]
+- Email - [benardo188@gmail.com]
 
 ## License
 
