@@ -14,6 +14,7 @@ export class ItemsService {
     ){}
 
     create(item : CreateItemDto , user: User){
+        console.log(user);
         const newItem = this.itemRepository.create(item);
         newItem.user = user;
         return this.itemRepository.save(newItem);
@@ -34,9 +35,6 @@ export class ItemsService {
         }
         
         
-        
-
-
         return q.getRawMany();
     }
     async approveItem(id : number, approve: boolean){

@@ -1,5 +1,6 @@
 import { Injectable, NestInterceptor ,ExecutionContext, CallHandler} from "@nestjs/common";
 import { UsersService } from "../../users/users.service";
+import * as jwt from 'jsonwebtoken';
 
 @Injectable()
 export class CurrentUserInterceptor implements NestInterceptor{
@@ -7,12 +8,21 @@ export class CurrentUserInterceptor implements NestInterceptor{
 
     async intercept(ctx: ExecutionContext, next: CallHandler) {
         const request = ctx.switchToHttp().getRequest();
-        const {userId} = request.session || {};
+        const token = request.session.jwt;
 
-        if(userId){
-            const user = await this.userSevice.findOne(userId);
-            request.currentUser = user;
+    if (token) {
+      try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET || 'tes123');
+        const userId = decoded.sub as string; 
+        if (decoded.sub) {
+          const user = await this.userSevice.findOne(parseInt(userId));
+          console.log(user);
+          request.currentUser = user;
         }
+      } catch (error) {
+        // Handle token verification errors if needed
+      }
+    }
 
         return next.handle();
     }

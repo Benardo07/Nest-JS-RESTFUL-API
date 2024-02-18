@@ -1,5 +1,5 @@
 import { Exclude } from "class-transformer";
-import { Item } from "src/items/item.entity";
+import { Item } from "../items/item.entity";
 import { AfterInsert, AfterUpdate, AfterRemove, Column, Entity,PrimaryGeneratedColumn, OneToMany} from "typeorm";
 
 
@@ -18,7 +18,7 @@ export class User {
     @Exclude()
     password: string;
 
-    @Column({default : true})
+    @Column({default : false})
     admin : boolean;
 
     @OneToMany(() => Item , (item) => item.user)
